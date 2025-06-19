@@ -1,4 +1,7 @@
 class AnalogClock extends HTMLElement {
+    static getConfigElement() {
+    return document.createElement("analog-clock-editor");
+  }
   set hass(hass) {
 
     const formatStackTrace = (stack) => {
