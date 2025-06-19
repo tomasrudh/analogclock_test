@@ -662,3 +662,30 @@ class AnalogClock extends HTMLElement {
 }
 
 customElements.define('analog-clock', AnalogClock);
+
+
+class ContentCardEditor extends LitElement {
+  setConfig(config) {
+    this._config = config;
+  }
+
+  configChanged(newConfig) {
+    const event = new Event("config-changed", {
+      bubbles: true,
+      composed: true,
+    });
+    event.detail = { config: newConfig };
+    this.dispatchEvent(event);
+  }
+}
+
+customElements.define("content-card-editor", ContentCardEditor);
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "content-card-example",
+  name: "Content Card",
+  preview: false, // Optional - defaults to false
+  description: "A custom card made by me!", // Optional
+  documentationURL:
+    "https://developers.home-assistant.io/docs/frontend/custom-ui/custom-card", // Adds a help link in the frontend card editor
+});
