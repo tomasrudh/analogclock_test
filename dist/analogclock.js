@@ -679,11 +679,11 @@ class ContentCardEditor extends LitElement {
   }
 }
 
-customElements.define("content-card-editor", ContentCardEditor);
+customElements.define("analog-clock", ContentCardEditor);
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: "content-card-example",
-  name: "Content Card",
+  name: "AnalogClock",
   preview: false, // Optional - defaults to false
   description: "A custom card made by me!", // Optional
   documentationURL:
