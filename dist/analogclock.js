@@ -685,7 +685,7 @@ class AnalogClockEditor extends LitElement {
 
   configChanged(newConfig) {
     const event = new Event("config-changed", {
-      bubbles: true,
+      hide_minorticks: true,
       composed: true,
     });
     event.detail = { config: newConfig };
