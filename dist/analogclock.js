@@ -716,13 +716,7 @@ class AnalogClockEditor extends LitElement {
       .schema=${[
         {name: "entity", selector: { entity: { domain: "light" } }},
         {name: "battery_sensor", selector: { entity: { device_class: "battery" } }},
-        {name: "show_bars", selector: { select: { multiple: true, mode: "list", options: [
-          {label: "Label 1", value: "bar1"},
-          {label: "Label 2", value: "bar2"},
-          {label: "Another Label", value: "bar3"},
-          {label: "What now?", value: "bar4"},
-          ]}
-        }}
+        {name: "hide_minorticks", boolean }
       ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
