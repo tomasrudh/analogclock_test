@@ -683,15 +683,6 @@ class AnalogClockEditor extends LitElement {
     this._config = config;
   }
 
-  configChanged(newConfig) {
-    const event = new Event("config-changed", {
-      hide_minorticks: true,
-      composed: true,
-    });
-    event.detail = { config: newConfig };
-    this.dispatchEvent(event);
-  }
-
   // This function is called when the input element of the editor loses focus
   entityChanged(ev) {
 
@@ -733,7 +724,7 @@ window.customCards = window.customCards || [];
 window.customCards.push({
   type: "analog-clock",
   name: "AnalogClock",
-  preview: false, // Optional - defaults to false
+  preview: true, // Optional - defaults to false
   description: "An analog clock card", // Optional
   documentationURL:
     "https://github.com/tomasrudh/analogclock_test",
