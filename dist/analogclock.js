@@ -671,7 +671,7 @@ class AnalogClock extends HTMLElement {
 customElements.define('analog-clock', AnalogClock);
 
 
-class AnalogClockEditor extends LitElement {
+class AnalogClockEditor extends HTMLElement {
   static get properties() {
     return {
       hass: {},
@@ -714,8 +714,6 @@ class AnalogClockEditor extends LitElement {
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-        {name: "entity", selector: { entity: { domain: "light" } }},
-        {name: "battery_sensor", selector: { entity: { device_class: "battery" } }},
         {name: "hide_minorticks", boolean }
       ]}
       .computeLabel=${this._computeLabel}
