@@ -697,7 +697,7 @@ class AnalogClockEditor extends LitElement {
     // this make sure the changes are saved correctly later and will update the preview
     const event = new CustomEvent("config-changed", {
       detail: { config: _config },
-      hide_minorticks: true,
+      bubbles: true,
       composed: true,
     });
     this.dispatchEvent(event);
