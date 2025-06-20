@@ -715,7 +715,7 @@ class AnalogClockEditor extends LitElement {
       .data=${this._config}
       .schema=${[
         //{name: "entity", selector: { entity: { domain: "light" } }},
-        {name: "hide_weeknumber", boolean: true }
+        {name: "hide_weeknumber", boolean: null }
       ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
