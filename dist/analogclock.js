@@ -1,5 +1,5 @@
 import {
-  LitElement,
+  html, LitElement,
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
 class AnalogClock extends HTMLElement {
@@ -704,9 +704,9 @@ class AnalogClockEditor extends LitElement {
   }
 
   render() {
-    // if (!this.hass || !this._config) {
-    //   return html``;
-    // }
+    if (!this.hass || !this._config) {
+      return html``;
+    }
 
     // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
     return html`
