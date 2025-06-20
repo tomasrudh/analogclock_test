@@ -710,11 +710,23 @@ class AnalogClockEditor extends LitElement {
 
     // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
     return html`
-    Entity:
-    <input
-    .value=${this._config.entity}
-    @focusout=${this.entityChanged}
-    ></input>
+      <ha-form
+      .hass=${this._hass}
+      .data=${this._config}
+      .schema=${[
+        {name: "entity", selector: { entity: { domain: "light" } }},
+        {name: "battery_sensor", selector: { entity: { device_class: "battery" } }},
+        {name: "show_bars", selector: { select: { multiple: true, mode: "list", options: [
+          {label: "Label 1", value: "bar1"},
+          {label: "Label 2", value: "bar2"},
+          {label: "Another Label", value: "bar3"},
+          {label: "What now?", value: "bar4"},
+          ]}
+        }}
+      ]}
+      .computeLabel=${this._computeLabel}
+      @value-changed=${this._valueChanged} 
+      ></ha-form>
     `;
   }
 }
