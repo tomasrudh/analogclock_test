@@ -691,6 +691,7 @@ class AnalogClockEditor extends LitElement {
     event.detail = { config: newConfig };
     this.dispatchEvent(event);
   }
+
   // This function is called when the input element of the editor loses focus
   entityChanged(ev) {
 
@@ -705,7 +706,7 @@ class AnalogClockEditor extends LitElement {
     // this make sure the changes are saved correctly later and will update the preview
     const event = new CustomEvent("config-changed", {
       detail: { config: _config },
-      bubbles: true,
+      hide_minorticks: true,
       composed: true,
     });
     this.dispatchEvent(event);
