@@ -671,7 +671,7 @@ class AnalogClock extends HTMLElement {
 customElements.define('analog-clock', AnalogClock);
 
 
-class AnalogClockEditor extends HTMLElement {
+class AnalogClockEditor extends LitElement {
   static get properties() {
     return {
       hass: {},
@@ -704,9 +704,9 @@ class AnalogClockEditor extends HTMLElement {
   }
 
   render() {
-    if (!this.hass || !this._config) {
-      return html``;
-    }
+    // if (!this.hass || !this._config) {
+    //   return html``;
+    // }
 
     // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
     return html`
