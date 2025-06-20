@@ -718,7 +718,7 @@ class AnalogClockEditor extends LitElement {
           {label: "Label 1", value: "bar1"},
           {label: "Label 2", value: "bar2"},
           {label: "Another Label", value: "bar3"},
-          {label: "What now?", value: "bar4"},
+          {label: "What now?", value: "bar4"}
           ]}
         }}
       ]}
