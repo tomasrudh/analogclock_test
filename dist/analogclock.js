@@ -666,6 +666,27 @@ class AnalogClock extends LitElement {
   getCardSize() {
     return 3;
   }
+
+  render() {
+    if (!this.hass || !this._config) {
+      return html``;
+    }
+
+    const stateObj = this.hass.states[this._config.entity];
+    if (!stateObj) {
+      return html` <ha-card>Unknown entity: ${this._config.entity}</ha-card> `;
+    }
+
+    // @click below is also LitElement magic
+    return html`
+      <ha-card>
+        <div>${stateObj.attributes.friendly_name || stateObj.entity_id}</div>
+        <button @click=${this.buttonClicked}>
+          Turn ${stateObj.state === "on" ? "off" : "on"}
+        </button>
+      </ha-card>
+    `;
+  }
 }
 
 customElements.define('analog-clock', AnalogClock);
