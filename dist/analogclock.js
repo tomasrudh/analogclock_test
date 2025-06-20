@@ -714,7 +714,7 @@ class AnalogClockEditor extends LitElement {
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-        {name: "hide_minorticks", boolean }
+        {name: "hide_minorticks", selector: { entity: { domain: "light" } }}
       ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
