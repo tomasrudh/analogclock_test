@@ -671,16 +671,16 @@ class AnalogClock extends HTMLElement {
 customElements.define('analog-clock', AnalogClock);
 
 
-class ContentCardEditor extends LitElement {
-  setConfig(config) {
-    this._config = config;
-  }
-
+class AnalogClockEditor extends LitElement {
   static get properties() {
     return {
       hass: {},
       _config: {},
     };
+  }
+
+  setConfig(config) {
+    this._config = config;
   }
 
   configChanged(newConfig) {
@@ -691,9 +691,43 @@ class ContentCardEditor extends LitElement {
     event.detail = { config: newConfig };
     this.dispatchEvent(event);
   }
+  // This function is called when the input element of the editor loses focus
+  entityChanged(ev) {
+
+    // We make a copy of the current config so we don't accidentally overwrite anything too early
+    const _config = Object.assign({}, this._config);
+    // Then we update the entity value with what we just got from the input field
+    _config.entity = ev.target.value;
+    // And finally write back the updated configuration all at once
+    this._config = _config;
+
+    // A config-changed event will tell lovelace we have made changed to the configuration
+    // this make sure the changes are saved correctly later and will update the preview
+    const event = new CustomEvent("config-changed", {
+      detail: { config: _config },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
+
+  render() {
+    if (!this.hass || !this._config) {
+      return html``;
+    }
+
+    // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
+    return html`
+    Entity:
+    <input
+    .value=${this._config.entity}
+    @focusout=${this.entityChanged}
+    ></input>
+    `;
+  }
 }
 
-customElements.define("analog-clock-editor", ContentCardEditor);
+customElements.define("analog-clock-editor", AnalogClockEditor);
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: "analog-clock",
