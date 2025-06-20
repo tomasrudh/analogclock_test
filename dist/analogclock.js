@@ -3,7 +3,7 @@ import {
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
 class AnalogClock extends HTMLElement {
-    static getConfigElement() {
+  static getConfigElement() {
     return document.createElement("analog-clock-editor");
   }
   set hass(hass) {
@@ -676,6 +676,13 @@ class ContentCardEditor extends LitElement {
     this._config = config;
   }
 
+  static get properties() {
+    return {
+      hass: {},
+      _config: {},
+    };
+  }
+
   configChanged(newConfig) {
     const event = new Event("config-changed", {
       bubbles: true,
@@ -692,7 +699,7 @@ window.customCards.push({
   type: "analog-clock",
   name: "AnalogClock",
   preview: false, // Optional - defaults to false
-  description: "A custom card made by me!", // Optional
+  description: "An analog clock card", // Optional
   documentationURL:
-    "https://developers.home-assistant.io/docs/frontend/custom-ui/custom-card", // Adds a help link in the frontend card editor
+    "https://github.com/tomasrudh/analogclock_test",
 });
