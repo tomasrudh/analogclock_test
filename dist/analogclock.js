@@ -13,7 +13,8 @@ class AnalogClock extends LitElement {
     };
 
     if (!this.content) {
-      console.info(`%c ANALOG-CLOCK v3.2 `, 'color: white; font-weight: bold; background: black');
+      // console.info(`%c ANALOG-CLOCK v3.2 `, 'color: white; font-weight: bold; background: black');
+      console.info('ANALOG-CLOCK v3.2');
       var config = this.config;
       const card = document.createElement('ha-card');
       this.content = document.createElement('div');
