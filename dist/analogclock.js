@@ -7,9 +7,6 @@ class AnalogClock extends HTMLElement {
     return document.createElement("analog-clock-editor");
   }
 
-  static getStubConfig() {
-    return { entity: "sun.sun" }
-  }
   set hass(hass) {
 
     const formatStackTrace = (stack) => {
@@ -698,7 +695,7 @@ class AnalogClockEditor extends LitElement {
 
     this._config = _config;
 
-    const event = new CustomEvent("config-changed", {
+    const event = new Event("config-changed", {
       detail: { config: _config },
       bubbles: true,
       composed: true,
