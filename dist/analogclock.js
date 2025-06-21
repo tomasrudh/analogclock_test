@@ -684,16 +684,17 @@ class AnalogClockEditor extends LitElement {
   }
 
   // This function is called when the input element of the editor loses focus
-  _valueChanged(ev) {
-    if (!this._config || !this._hass) {
-      return;
-    }
-    const _config = Object.assign({}, this._config);
-    _config.diameter = ev.detail.value.diameter;
-    _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
+  entityChanged(ev) {
 
+    // We make a copy of the current config so we don't accidentally overwrite anything too early
+    const _config = Object.assign({}, this._config);
+    // Then we update the entity value with what we just got from the input field
+    _config.entity = ev.target.value;
+    // And finally write back the updated configuration all at once
     this._config = _config;
 
+    // A config-changed event will tell lovelace we have made changed to the configuration
+    // this make sure the changes are saved correctly later and will update the preview
     const event = new CustomEvent("config-changed", {
       detail: { config: _config },
       bubbles: true,
@@ -714,8 +715,8 @@ class AnalogClockEditor extends LitElement {
       .data=${this._config}
       .schema=${[
         //{name: "entity", selector: { entity: { domain: "light" } }},
-        {name: "diameter", selector: { number: { min: 0, max: 1000 }}},
-        {name: "hide_weeknumber", selector: { boolean: null }}
+        { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
+        { name: "hide_weeknumber", selector: { boolean: null } }
       ]}
       .computeLabel=${this._computeLabel}
       .value=${this._config.entity}
