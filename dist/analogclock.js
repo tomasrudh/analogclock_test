@@ -684,17 +684,17 @@ class AnalogClockEditor extends LitElement {
   }
 
   // This function is called when the input element of the editor loses focus
-  valueChanged(ev) {
-
-    // We make a copy of the current config so we don't accidentally overwrite anything too early
+  _valueChanged(ev) {
+    if (!this._config || !this._hass) {
+      return;
+    }
     const _config = Object.assign({}, this._config);
-    // Then we update the entity value with what we just got from the input field
-    _config.entity = ev.target.value;
-    // And finally write back the updated configuration all at once
+    _config.entity = ev.detail.value.entity;
+    _config.battery_sensor = ev.detail.value.battery_sensor;
+    _config.show_bars = ev.detail.value.show_bars;
+
     this._config = _config;
 
-    // A config-changed event will tell lovelace we have made changed to the configuration
-    // this make sure the changes are saved correctly later and will update the preview
     const event = new CustomEvent("config-changed", {
       detail: { config: _config },
       bubbles: true,
