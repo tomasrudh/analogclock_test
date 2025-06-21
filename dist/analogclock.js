@@ -714,7 +714,7 @@ render() {
       .schema=${[
       //{name: "entity", selector: { entity: { domain: "light" } }},
       { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
-      { name: "hide_weeknumber", selector: { boolean: true } }
+      { name: "hide_weeknumber", selector: { boolean: null } }
     ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
