@@ -688,6 +688,7 @@ class AnalogClockEditor extends LitElement {
     if (!this._config || !this._hass) {
       return;
     }
+    console.info('valueChanged');
     const _config = Object.assign({}, this._config);
     _config.diameter = ev.detail.value.diameter;
     _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
