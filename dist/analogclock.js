@@ -686,21 +686,20 @@ class AnalogClockEditor extends LitElement {
   }
 
   _valueChanged(newConfig) {
-    // if (!this._config || !this._hass) {
-    //   return;
-    // }
-    // const _config = Object.assign({}, this._config);
-    // _config.diameter = newConfig.detail.value.diameter;
-    // _config.hide_weeknumber = newConfig.detail.value.hide_weeknumber;
+    if (!this._config || !this._hass) {
+      return;
+    }
+    const _config = Object.assign({}, this._config);
+    _config.diameter = newConfig.detail.value.diameter;
+    _config.hide_weeknumber = newConfig.detail.value.hide_weeknumber;
 
-    // this._config = _config;
+    this._config = _config;
 
     const event = new Event("config-changed", {
-      // detail: { config: _config },
+      detail: { config: _config },
       bubbles: true,
       composed: true,
     });
-    event.detail = { config: newConfig };
     this.dispatchEvent(event);
   }
 
