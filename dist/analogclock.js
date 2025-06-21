@@ -685,27 +685,6 @@ class AnalogClockEditor extends LitElement {
     this._config = config;
   }
 
-  onChanged(event) {
-    console.log("editor.onChanged()");
-    this.doMessageForUpdate(event);
-  }
-
-  doMessageForUpdate(changedEvent) {
-    // this._config is readonly, copy needed
-    const newConfig = Object.assign({}, this._config);
-    if (changedEvent.target.id == "header") {
-      newConfig.header = changedEvent.target.value;
-    } else if (changedEvent.target.id == "entity") {
-      newConfig.entity = changedEvent.target.value;
-    }
-    const messageEvent = new CustomEvent("config-changed", {
-      detail: { config: newConfig },
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(messageEvent);
-  }
-
 _valueChanged(newConfig) {
   if (!this._config || !this._hass) {
     return;
@@ -736,6 +715,7 @@ render() {
     ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
+      @focusout=${this.valueChanged}
       ></ha-form>
     `;
 }
