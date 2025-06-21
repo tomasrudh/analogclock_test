@@ -685,39 +685,60 @@ class AnalogClockEditor extends LitElement {
     this._config = config;
   }
 
-  _valueChanged(newConfig) {
-    if (!this._config || !this._hass) {
-      return;
+  onChanged(event) {
+    console.log("editor.onChanged()");
+    this.doMessageForUpdate(event);
+  }
+
+  doMessageForUpdate(changedEvent) {
+    // this._config is readonly, copy needed
+    const newConfig = Object.assign({}, this._config);
+    if (changedEvent.target.id == "header") {
+      newConfig.header = changedEvent.target.value;
+    } else if (changedEvent.target.id == "entity") {
+      newConfig.entity = changedEvent.target.value;
     }
-    const _config = Object.assign({}, this._config);
-    _config.diameter = newConfig.detail.value.diameter;
-    _config.hide_weeknumber = newConfig.detail.value.hide_weeknumber;
-
-    this._config = _config;
-
-    const event = new Event("config-changed", {
-      detail: { config: _config },
+    const messageEvent = new CustomEvent("config-changed", {
+      detail: { config: newConfig },
       bubbles: true,
       composed: true,
     });
-    this.dispatchEvent(event);
+    this.dispatchEvent(messageEvent);
   }
 
-  render() {
-    return html`
+_valueChanged(newConfig) {
+  if (!this._config || !this._hass) {
+    return;
+  }
+  const _config = Object.assign({}, this._config);
+  _config.diameter = newConfig.detail.value.diameter;
+  _config.hide_weeknumber = newConfig.detail.value.hide_weeknumber;
+
+  this._config = _config;
+
+  const event = new Event("config-changed", {
+    detail: { config: _config },
+    bubbles: true,
+    composed: true,
+  });
+  this.dispatchEvent(event);
+}
+
+render() {
+  return html`
       <ha-form
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-        //{name: "entity", selector: { entity: { domain: "light" } }},
-        { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
-        { name: "hide_weeknumber", selector: { boolean: null } }
-      ]}
+      //{name: "entity", selector: { entity: { domain: "light" } }},
+      { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
+      { name: "hide_weeknumber", selector: { boolean: null } }
+    ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
       ></ha-form>
     `;
-  }
+}
 }
 
 customElements.define("analog-clock-editor", AnalogClockEditor);
