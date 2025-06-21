@@ -683,18 +683,17 @@ class AnalogClockEditor extends LitElement {
     this._config = config;
   }
 
-  // This function is called when the input element of the editor loses focus
-  entityChanged(ev) {
-
-    // We make a copy of the current config so we don't accidentally overwrite anything too early
+  _valueChanged(ev) {
+    if (!this._config || !this._hass) {
+      return;
+    }
     const _config = Object.assign({}, this._config);
-    // Then we update the entity value with what we just got from the input field
-    _config.entity = ev.target.value;
-    // And finally write back the updated configuration all at once
+    _config.entity = ev.detail.value.entity;
+    _config.diameter = ev.detail.value.diameter;
+    _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
+
     this._config = _config;
 
-    // A config-changed event will tell lovelace we have made changed to the configuration
-    // this make sure the changes are saved correctly later and will update the preview
     const event = new CustomEvent("config-changed", {
       detail: { config: _config },
       bubbles: true,
@@ -704,11 +703,6 @@ class AnalogClockEditor extends LitElement {
   }
 
   render() {
-    if (!this.hass || !this._config) {
-      return html``;
-    }
-
-    // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
     return html`
       <ha-form
       .hass=${this._hass}
@@ -719,13 +713,11 @@ class AnalogClockEditor extends LitElement {
         { name: "hide_weeknumber", selector: { boolean: null } }
       ]}
       .computeLabel=${this._computeLabel}
-      .value=${this._config.entity}
-      @focusout=${this._valueChanged}
+      @value-changed=${this._valueChanged} 
       ></ha-form>
     `;
   }
 }
-
 
 customElements.define("analog-clock-editor", AnalogClockEditor);
 window.customCards = window.customCards || [];
