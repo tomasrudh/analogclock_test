@@ -684,7 +684,7 @@ class AnalogClockEditor extends LitElement {
   }
 
   // This function is called when the input element of the editor loses focus
-  entityChanged(ev) {
+  valueChanged(ev) {
 
     // We make a copy of the current config so we don't accidentally overwrite anything too early
     const _config = Object.assign({}, this._config);
