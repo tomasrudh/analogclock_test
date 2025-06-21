@@ -6,6 +6,10 @@ class AnalogClock extends HTMLElement {
   static getConfigElement() {
     return document.createElement("analog-clock-editor");
   }
+
+  static getStubConfig() {
+    return { entity: "sun.sun" }
+  }
   set hass(hass) {
 
     const formatStackTrace = (stack) => {
@@ -688,7 +692,6 @@ class AnalogClockEditor extends LitElement {
     if (!this._config || !this._hass) {
       return;
     }
-    console.info('valueChanged');
     const _config = Object.assign({}, this._config);
     _config.diameter = ev.detail.value.diameter;
     _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
@@ -704,7 +707,6 @@ class AnalogClockEditor extends LitElement {
   }
 
   render() {
-    console.info('render');
     return html`
       <ha-form
       .hass=${this._hass}
