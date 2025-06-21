@@ -689,9 +689,9 @@ class AnalogClockEditor extends LitElement {
       return;
     }
     const _config = Object.assign({}, this._config);
-    _config.entity = ev.detail.value.entity;
+    // _config.entity = ev.detail.value.entity;
+    _config.diameter = ev.detail.value.diameter;
     _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
-    _config.show_bars = ev.detail.value.show_bars;
 
     this._config = _config;
 
