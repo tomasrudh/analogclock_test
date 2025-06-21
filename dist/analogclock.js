@@ -689,7 +689,6 @@ class AnalogClockEditor extends LitElement {
       return;
     }
     const _config = Object.assign({}, this._config);
-    // _config.entity = ev.detail.value.entity;
     _config.diameter = ev.detail.value.diameter;
     _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
 
@@ -715,11 +714,12 @@ class AnalogClockEditor extends LitElement {
       .data=${this._config}
       .schema=${[
         //{name: "entity", selector: { entity: { domain: "light" } }},
-        {name: "hide_weeknumber", selector: { boolean: null }},
-        {name: "diameter", selector: { number: { min: 0, max: 1000 }}}
+        {name: "diameter", selector: { number: { min: 0, max: 1000 }}},
+        {name: "hide_weeknumber", selector: { boolean: null }}
       ]}
       .computeLabel=${this._computeLabel}
-      @value-changed=${this._valueChanged} 
+      .value=${this._config.entity}
+      @focusout=${this._valueChanged}
       ></ha-form>
     `;
   }
