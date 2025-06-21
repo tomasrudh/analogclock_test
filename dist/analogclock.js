@@ -688,7 +688,7 @@ class AnalogClockEditor extends LitElement {
 _valueChanged(ev) {
   //console.info('_valueChanged()');
   // We make a copy of the current config so we don't accidentally overwrite anything too early
-  const _config = Object.assign({}, this._config);
+  _config = Object.assign({}, this._config);
   _config.diameter = ev.detail.value.diameter;
   _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
 
