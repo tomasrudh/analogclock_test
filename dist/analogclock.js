@@ -2,7 +2,7 @@ import {
   html, LitElement,
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-class AnalogClock extends HTMLElement {
+class AnalogClock extends LitElement {
   static getConfigElement() {
     return document.createElement("analog-clock-editor");
   }
