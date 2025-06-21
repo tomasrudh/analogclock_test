@@ -689,8 +689,6 @@ _valueChanged(ev) {
   //console.info('_valueChanged()');
   // We make a copy of the current config so we don't accidentally overwrite anything too early
   const _config = Object.assign({}, this._config);
-  // _config.diameter = ev.detail.value.diameter;
-  // _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
   _config = ev.detail.value;
 
   // And finally write back the updated configuration all at once
@@ -716,7 +714,7 @@ render() {
       .schema=${[
       //{name: "entity", selector: { entity: { domain: "light" } }},
       { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
-      { name: "hide_weeknumber", selector: { boolean: null } }
+      { name: "hide_weeknumber", selector: { boolean: true } }
     ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
