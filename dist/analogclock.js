@@ -704,6 +704,7 @@ class AnalogClockEditor extends LitElement {
   }
 
   render() {
+    console.info('render');
     return html`
       <ha-form
       .hass=${this._hass}
@@ -714,7 +715,6 @@ class AnalogClockEditor extends LitElement {
         { name: "hide_weeknumber", selector: { boolean: null } }
       ]}
       .computeLabel=${this._computeLabel}
-      console.info('render)
       @value-changed=${this._valueChanged} 
       ></ha-form>
     `;
