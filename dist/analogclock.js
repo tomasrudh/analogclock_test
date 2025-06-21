@@ -700,7 +700,8 @@ _valueChanged(ev) {
 
   // A config-changed event will tell lovelace we have made changed to the configuration
   // this make sure the changes are saved correctly later and will update the preview
-  const event = new Event("config-changed", {
+  console.info(_config.diameter);
+  const event = new CustomEvent("config-changed", {
     detail: { config: _config },
     bubbles: true,
     composed: true,
@@ -709,7 +710,7 @@ _valueChanged(ev) {
 }
 
 render() {
-  console.info('render()');
+  // console.info('render()');
   return html`
       <ha-form
       .hass=${this._hass}
