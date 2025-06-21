@@ -671,7 +671,7 @@ class AnalogClock extends HTMLElement {
 customElements.define('analog-clock', AnalogClock);
 
 
-class AnalogClockEditor extends LitElement {
+class AnalogClockEditor extends HTMLElement {
   static get properties() {
     return {
       hass: {},
