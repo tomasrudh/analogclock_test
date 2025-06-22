@@ -712,10 +712,10 @@ class AnalogClockEditor extends LitElement {
       .schema=${[
         { name: "locale", selector: { text: null }},
         { name: "timezone", selector: { text: null }},
-        { name: "show_timezone", selector: { boolean: null } },
+        { name: "show_timezone", selector: { boolean: null }},
         { name: "timezonedisplayname", selector: { text: null }},
-        { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
-        { name: "hide_weeknumber", selector: { boolean: null } }
+        { name: "diameter", selector: { number: { min: 0, max: 1000 } }},
+        { name: "hide_weeknumber", selector: { boolean: null }}
       ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
