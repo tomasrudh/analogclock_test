@@ -710,10 +710,10 @@ render() {
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-      { name: "locale", selector: { string: null }},
-      { name: "timezone", selector: { string: null }},
+      { name: "locale", selector: { text: null }},
+      { name: "timezone", selector: { text: null }},
       { name: "show_timezone", selector: { boolean: null }},
-      { name: "timezonedisplayname", selector: { string: null }},
+      { name: "timezonedisplayname", selector: { text: null }},
       { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
       { name: "hide_weeknumber", selector: { boolean: null } }
     ]}
