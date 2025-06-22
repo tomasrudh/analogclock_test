@@ -710,7 +710,7 @@ render() {
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-      { name: "locale" },
+      { name: "locale", selector: {} },
       // { name: "timezone", selector: { text: {} }},
       { name: "show_timezone", selector: { boolean: null }},
       // { name: "timezonedisplayname", selector: { text: {} }},
