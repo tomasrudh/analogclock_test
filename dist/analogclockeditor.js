@@ -6,9 +6,9 @@ export class AnalogClockEditor extends LitElement {
     };
   }
 
-  setConfig(config) {
-    this._config = config;
-  }
+  // setConfig(config) {
+  //   this._config = config;
+  // }
 
 _valueChanged(ev) {
   // We make a copy of the current config so we don't accidentally overwrite anything too early
