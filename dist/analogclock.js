@@ -746,6 +746,7 @@ class AnalogClockEditor extends LitElement {
   }
 }
 
+
 customElements.define("analog-clock-editor", AnalogClockEditor);
 window.customCards = window.customCards || [];
 window.customCards.push({
