@@ -689,8 +689,9 @@ _valueChanged(ev) {
   //console.info('_valueChanged()');
   // We make a copy of the current config so we don't accidentally overwrite anything too early
   var _config = Object.assign({}, this._config);
-  _config.diameter = ev.detail.value.diameter;
-  _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
+  // _config.diameter = ev.detail.value.diameter;
+  // _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
+  _config = ev.detail.value;
 
   // And finally write back the updated configuration all at once
   this._config = _config;
