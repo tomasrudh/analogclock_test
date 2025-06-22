@@ -716,7 +716,7 @@ class AnalogClockEditor extends LitElement {
         { name: "timezonedisplayname", selector: { text: null }},
         { name: "diameter", selector: { number: { min: 0, max: 1000 } }},
         { name: "hide_weeknumber", selector: { boolean: null }},
-        { name: "color_background", selector: { text: null }}
+        { name: "color_background", selector: { color_rgb: null }}
       ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
