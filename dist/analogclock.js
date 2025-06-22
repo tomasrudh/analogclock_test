@@ -688,18 +688,18 @@ class AnalogClockEditor extends LitElement {
 _valueChanged(ev) {
   //console.info('_valueChanged()');
   // We make a copy of the current config so we don't accidentally overwrite anything too early
-  const _config = Object.assign({}, this._config);
-  this._config.diameter = ev.detail.value.diameter;
-  this._config.hide_weeknumber = ev.detail.value.hide_weeknumber;
+  var _config = Object.assign({}, this._config);
+  _config.diameter = ev.detail.value.diameter;
+  _config.hide_weeknumber = ev.detail.value.hide_weeknumber;
 
   // And finally write back the updated configuration all at once
-  //this._config = _config;
+  this._config = _config;
 
   // A config-changed event will tell lovelace we have made changed to the configuration
   // this make sure the changes are saved correctly later and will update the preview
   //console.info(_config.diameter);
   const event = new CustomEvent("config-changed", {
-    detail: { config: this._config },
+    detail: { config: _config },
     bubbles: true,
     composed: true,
   });
