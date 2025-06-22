@@ -710,7 +710,7 @@ class AnalogClockEditor extends LitElement {
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-        { name: "locale", selector: {} },
+        { name: "locale", selector: { text: null }},
         // { name: "timezone", selector: { text: {} }},
         { name: "show_timezone", selector: { boolean: null } },
         // { name: "timezonedisplayname", selector: { text: {} }},
