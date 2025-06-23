@@ -1,4 +1,4 @@
-class AnalogClock extends HTMLElement {
+export class AnalogClock extends HTMLElement {
   static getConfigElement() {
     return document.createElement("analog-clock-editor");
   }

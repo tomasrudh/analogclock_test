@@ -2,7 +2,7 @@ import {
   html, LitElement,
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-class AnalogClockEditor extends LitElement {
+export class AnalogClockEditor extends LitElement {
   static get properties() {
     return {
       hass: {},
@@ -39,32 +39,32 @@ class AnalogClockEditor extends LitElement {
       .hass=${this._hass}
       .data=${this._config}
       .schema=${[
-        { name: "locale", selector: { text: null }},
-        { name: "timezone", selector: { text: null }},
-        { name: "show_timezone", selector: { boolean: null }},
-        { name: "timezonedisplayname", selector: { text: null }},
-        { name: "diameter", selector: { number: { min: 0, max: 1000 } }},
-        { name: "hide_weeknumber", selector: { boolean: null }},
-        { name: "color_background", selector: { text: null }},
-        { name: "hide_secondhand", selector: { boolean: null }},
-        { name: "hide_weekday", selector: { boolean: null }},
-        { name: "hide_date", selector: { boolean: null }},
-        { name: "hide_facedigits", selector: { boolean: null }},
-        { name: "hide_digitaltime", selector: { boolean: null }},
-        { name: "color_ticks", selector: { text: null }},
-        { name: "hide_minorticks", selector: { boolean: null }},
-        { name: "hide_majorticks", selector: { boolean: null }},
-        { name: "color_facedigits", selector: { text: null }},
-        { name: "color_digitaltime", selector: { text: null }},
-        { name: "color_hourhand", selector: { text: null }},
-        { name: "color_minutehand", selector: { text: null }},
-        { name: "color_secondhand", selector: { text: null }},
-        { name: "color_text", selector: { text: null }},
-        { name: "style_hourhand", selector: { number: { min: 1, max: 6 } }},
-        { name: "style_minutehand", selector: { number: { min: 1, max: 6 } }},
-        { name: "style_secondhand", selector: { number: { min: 1, max: 6 } }},
-        { name: "dateformat", selector: { text: null }},
-        { name: "timeformat", selector: { text: null }}
+        { name: "locale", selector: { text: null } },
+        { name: "timezone", selector: { text: null } },
+        { name: "show_timezone", selector: { boolean: null } },
+        { name: "timezonedisplayname", selector: { text: null } },
+        { name: "diameter", selector: { number: { min: 0, max: 1000 } } },
+        { name: "hide_weeknumber", selector: { boolean: null } },
+        { name: "color_background", selector: { text: null } },
+        { name: "hide_secondhand", selector: { boolean: null } },
+        { name: "hide_weekday", selector: { boolean: null } },
+        { name: "hide_date", selector: { boolean: null } },
+        { name: "hide_facedigits", selector: { boolean: null } },
+        { name: "hide_digitaltime", selector: { boolean: null } },
+        { name: "color_ticks", selector: { text: null } },
+        { name: "hide_minorticks", selector: { boolean: null } },
+        { name: "hide_majorticks", selector: { boolean: null } },
+        { name: "color_facedigits", selector: { text: null } },
+        { name: "color_digitaltime", selector: { text: null } },
+        { name: "color_hourhand", selector: { text: null } },
+        { name: "color_minutehand", selector: { text: null } },
+        { name: "color_secondhand", selector: { text: null } },
+        { name: "color_text", selector: { text: null } },
+        { name: "style_hourhand", selector: { number: { min: 1, max: 6 } } },
+        { name: "style_minutehand", selector: { number: { min: 1, max: 6 } } },
+        { name: "style_secondhand", selector: { number: { min: 1, max: 6 } } },
+        { name: "dateformat", selector: { text: null } },
+        { name: "timeformat", selector: { text: null } }
       ]}
       .computeLabel=${this._computeLabel}
       @value-changed=${this._valueChanged} 
