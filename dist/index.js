@@ -1,13 +1,13 @@
 import { AnalogClock } from ".\analogclock";
-import { ToggleCardLitEditor } from "./editor";
+import { AnalogClockEditor } from ".\analogclockeditor";
 
 customElements.define(
     "analogclock",
     AnalogClock
 );
 customElements.define(
-    "togglecardliteditor",
-    ToggleCardLitEditor
+    "analogclockeditor",
+    AnalogClockEditor
 );
 
 window.customCards = window.customCards || [];
