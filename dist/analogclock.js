@@ -706,7 +706,12 @@ class AnalogClockEditor extends LitElement {
   _computeLabel(schema) {
     var labelMap = {
       locale: "Locale",
-      timezone: "Timezone"
+      timezone: "Timezone",
+      show_timezone: "Show timezone, instead of weekday",
+      diameter: "Diameter",
+      hide_weeknumber: "Hide week number",
+      color_background: "Background color",
+      hide_secondhand: "Hide second hand"
     }
     return labelMap[schema.name];
   }
