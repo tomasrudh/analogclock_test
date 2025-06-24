@@ -711,7 +711,25 @@ class AnalogClockEditor extends LitElement {
       diameter: "Diameter",
       hide_weeknumber: "Hide week number",
       color_background: "Background color",
-      hide_secondhand: "Hide second hand"
+      hide_secondhand: "Hide second hand",
+      hide_weekday: "Hide weekday",
+      hide_date: "Hide date",
+      hide_facedigits: "Hide face digits",
+      hide_digitaltime: "Hide digital time",
+      color_ticks: "Tick color",
+      hide_minorticks: "Hide minor ticks",
+      hide_majorticks: "Hide major ticks",
+      color_facedigits: "face digits color",
+      color_digitaltime: "Digital time color",
+      color_hourhand: "Hour hand color",
+      color_minutehand: "Minute hand color",
+      color_secondhand: "Second hand color",
+      color_text: "Text color",
+      style_hourhand: "Hour hand style",
+      style_minutehand: "Minute hand color",
+      style_secondhand: "Second hand color",
+      dateformat: "Date format",
+      timeformat: "Time format"
     }
     return labelMap[schema.name];
   }
